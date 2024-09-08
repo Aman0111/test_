@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You Mean Everything To Me</title>
+    <title>You Mean Everything To Me ❤️</title>
     <style>
         body, html {
             height: 100%;
@@ -21,20 +21,20 @@
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
             position: relative;
         }
         h1 {
             color: #ff4d4d;
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            margin-bottom: 15px;
         }
         p {
             color: #333;
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-bottom: 20px;
         }
         .heart {
             position: absolute;
@@ -69,7 +69,7 @@
             font-style: italic;
             color: #ff1a1a;
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1em;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
@@ -77,8 +77,8 @@
             background-color: #ff4d4d;
             color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 8px 16px;
+            font-size: 0.9em;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -86,20 +86,78 @@
         button:hover {
             background-color: #ff1a1a;
         }
+        .emoji {
+            font-size: 1.2em;
+            margin: 0 3px;
+            display: inline-block;
+        }
+        .love-meter {
+            width: 100%;
+            height: 15px;
+            background-color: #ffcccc;
+            border-radius: 8px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .love-meter-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #ff4d4d;
+            transition: width 2s ease-in-out;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            font-size: 0.9em;
+        }
+        .popup-content {
+            text-align: center;
+        }
+        .close-popup {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>You Mean Everything To Me</h1>
-        <p>Every moment with you is a treasure, every smile a gift. You've brought light to my darkest days and joy to my happiest moments. Your love is the most precious thing in my world.</p>
-        <button onclick="showMessage()">How much do I mean to you?</button>
-        <p id="message">You are my universe, my everything. I love you more than words can express!</p>
+        <h1>You Mean Everything To Me <span class="emoji">❤️</span></h1>
+        <p>Every moment with you is a treasure <span class="emoji">💎</span>, every smile a gift <span class="emoji">🎁</span>. You've brought light to my darkest days <span class="emoji">🌟</span> and joy to my happiest moments <span class="emoji">😊</span>. Your love is the most precious thing in my world <span class="emoji">🌎</span>.</p>
+        <button onclick="showPopup()">How much do I mean to you? <span class="emoji">🤔</span></button>
+        <p id="message">You are my universe <span class="emoji">🌌</span>, my everything <span class="emoji">✨</span>. I love you more than words can express! <span class="emoji">💖</span></p>
+        <div class="love-meter">
+            <div class="love-meter-fill"></div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h2>My Love For You</h2>
+            <p>You mean absolutely everything to me! <span class="emoji">❤️</span></p>
+        </div>
     </div>
 
     <script>
-        function showMessage() {
-            document.getElementById('message').style.opacity = '1';
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
             createHearts();
+            fillLoveMeter();
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
 
         function createHearts() {
@@ -115,6 +173,11 @@
                     heart.remove();
                 }, 5000);
             }
+        }
+
+        function fillLoveMeter() {
+            const loveMeter = document.querySelector('.love-meter-fill');
+            loveMeter.style.width = '100%';
         }
     </script>
 </body>
